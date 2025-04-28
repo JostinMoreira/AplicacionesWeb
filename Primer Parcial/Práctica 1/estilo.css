@@ -7,7 +7,7 @@ body {
 }
 
 header {
-    background-color: #0078d7;
+    background-color: #343138;
     color: white;
     padding: 1rem 0;
     text-align: center;
@@ -19,7 +19,7 @@ h1 {
 }
 
 nav {
-    background-color: #005a9e;
+    background-color: #464b4e;
     padding: 0.5rem;
     text-align: center;
 }
