@@ -4,7 +4,7 @@ Este proyecto es un dashboard informativo personal, Práctica #2
 
 ## Vista Previa
 
-![Vista previa del dashboard](/src/images/preview.jpg)
+![Vista previa del dashboard](Primer Parcial/Practica 2/src/images/preview.jpg)
 
 
 
