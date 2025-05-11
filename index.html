@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-gray-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio | Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="h-full">
+    <div class="min-h-full">
+        <!-- Header with personal brand logo and name -->
+        <header class="bg-indigo-600 shadow-lg">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between py-4">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <img class="h-14 w-14 rounded-full ring-2 ring-white shadow-md object-cover" src="src/images/profile.jpg" alt="Foto de Jostin Moreira">
+                    </div>
+                    <h1 class="ml-4 text-2xl font-bold tracking-tight text-white">Jostin Moreira | Estudiante de Software</h1>
+                </div>
+                <div>
+                    <button type="button" class="rounded-md bg-indigo-500 p-2 text-white hover:bg-indigo-400 focus:outline-none">
+                        <span class="sr-only">Ver notificaciones</span>
+                        <i class="fas fa-bell"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="flex">
+            <!-- Sidebar navigation -->
+         <!-- Sidebar navigation -->
+        <nav class="bg-gray-800 w-64 min-h-screen">
+        <div class="px-4 py-5">
+            <ul>
+            <li class="mb-3">
+                <a href="#" data-section="dashboard" class="nav-link flex items-center px-4 py-2 text-white bg-gray-900 rounded-md">
+                <i class="fas fa-tachometer-alt mr-3"></i>
+                Dashboard
+                </a>
+            </li>
+            <li class="mb-3">
+                <a href="#" data-section="sobre-mi" class="nav-link flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md">
+                <i class="fas fa-user mr-3"></i>
+                Sobre Mí
+                </a>
+            </li>
+            <li class="mb-3">
+                <a href="#" data-section="proyectos" class="nav-link flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md">
+                <i class="fas fa-briefcase mr-3"></i>
+                Proyectos
+                </a>
+            </li>
+            <li class="mb-3">
+                <a href="#" data-section="habilidades" class="nav-link flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md">
+                <i class="fas fa-graduation-cap mr-3"></i>
+                Habilidades
+                </a>
+            </li>
+            <li class="mb-3">
+                <a href="#" data-section="contacto" class="nav-link flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md">
+                <i class="fas fa-envelope mr-3"></i>
+                Contacto
+                </a>
+            </li>
+            </ul>
+        </div>
+        </nav>
+
+
+            <!-- Main content -->
+            <main class="flex-1 p-6 bg-gray-100">
+                <div class="mx-auto max-w-7xl">
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-6">Dashboard del Portafolio</h2>
+                    
+                    <!-- Status Cards - Grid with 3 columns -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <section class="bg-white overflow-hidden shadow rounded-lg">
+                            <div class="px-4 py-5 sm:p-6">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                                        <i class="fas fa-code text-white"></i>
+                                    </div>
+                                    <div class="ml-5 w-0 flex-1">
+                                        <dl>
+                                            <dt class="text-sm font-medium text-gray-500 truncate">Proyectos Completados</dt>
+                                            <dd class="flex items-baseline">
+                                                <div class="text-2xl font-semibold text-gray-900">3</div>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="bg-white overflow-hidden shadow rounded-lg">
+                            <div class="px-4 py-5 sm:p-6">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 bg-green-500 rounded-md p-3">
+                                        <i class="fas fa-users text-white"></i>
+                                    </div>
+                                    <div class="ml-5 w-0 flex-1">
+                                        <dl>
+                                            <dt class="text-sm font-medium text-gray-500 truncate">Semestres Aprobados</dt>
+                                            <dd class="flex items-baseline">
+                                                <div class="text-2xl font-semibold text-gray-900">3</div>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="bg-white overflow-hidden shadow rounded-lg">
+                            <div class="px-4 py-5 sm:p-6">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 bg-yellow-500 rounded-md p-3">
+                                        <i class="fas fa-star text-white"></i>
+                                    </div>
+                                    <div class="ml-5 w-0 flex-1">
+                                        <dl>
+                                            <dt class="text-sm font-medium text-gray-500 truncate">Estudiante de Software</dt>
+                                            <dd class="flex items-baseline">
+                                                <div class="text-2xl font-semibold text-gray-900">1+</div>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- Grid with 2 main blocks -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                        <!-- Recent Projects -->
+                        <article class="bg-white shadow rounded-lg">
+                            <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
+                                <h3 class="text-lg font-medium leading-6 text-gray-900">Proyectos Recientes</h3>
+                            </div>
+                            <ul class="divide-y divide-gray-200">
+                                <li class="px-4 py-4 sm:px-6">
+                                    <div class="flex items-center justify-between">
+                                        <p class="text-sm font-medium text-indigo-600 truncate">Golf Kart Uleam</p>
+                                        <div class="ml-2 flex-shrink-0 flex">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Completado</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="px-4 py-4 sm:px-6">
+                                    <div class="flex items-center justify-between">
+                                        <p class="text-sm font-medium text-indigo-600 truncate">App Cine Tkinter</p>
+                                        <div class="ml-2 flex-shrink-0 flex">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Completado</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="px-4 py-4 sm:px-6">
+                                    <div class="flex items-center justify-between">
+                                        <p class="text-sm font-medium text-indigo-600 truncate">Portafolio</p>
+                                        <div class="ml-2 flex-shrink-0 flex">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">En progreso</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </article>
+
+                        <!-- Skills Overview -->
+                        <article class="bg-white shadow rounded-lg">
+                            <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
+                                <h3 class="text-lg font-medium leading-6 text-gray-900">Habilidades Técnicas</h3>
+                            </div>
+                            <div class="px-4 py-5 sm:p-6">
+                                <div class="space-y-4">
+                                    <div>
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span class="text-sm font-medium text-gray-700">HTML/CSS</span>
+                                            <span class="text-sm text-gray-500">10%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-indigo-600 h-2 rounded-full" style="width: 10%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span class="text-sm font-medium text-gray-700">JavaScript</span>
+                                            <span class="text-sm text-gray-500">5%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-indigo-600 h-2 rounded-full" style="width: 5%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span class="text-sm font-medium text-gray-700">Python</span>
+                                            <span class="text-sm text-gray-500">50%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-indigo-600 h-2 rounded-full" style="width: 50%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span class="text-sm font-medium text-gray-700">C++</span>
+                                            <span class="text-sm text-gray-500">20%</span>
+                                        </div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-indigo-600 h-2 rounded-full" style="width: 20%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <section class="bg-white shadow rounded-lg overflow-hidden mb-8">
+                        <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
+                            <h3 class="text-lg font-medium leading-6 text-gray-900">Formulario de Contacto</h3>
+                        </div>
+                        <div class="px-4 py-5 sm:p-6">
+                            <form action="#" method="POST" class="space-y-4">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
+                                        <input type="text" name="name" id="name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                    </div>
+                                    <div>
+                                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                                        <input type="email" name="email" id="email" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="subject" class="block text-sm font-medium text-gray-700">Asunto</label>
+                                    <input type="text" name="subject" id="subject" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                </div>
+                                <div>
+                                    <label for="message" class="block text-sm font-medium text-gray-700">Mensaje</label>
+                                    <textarea name="message" id="message" rows="4" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                                </div>
+                                <div>
+                                    <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        Enviar Mensaje
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+
+        <!-- Footer with contact information -->
+        <footer class="bg-gray-800 text-white">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Contacto</h4>
+                        <address class="not-italic">
+                            <p class="mb-2"><i class="fas fa-envelope mr-2"></i> jostinmoreira58@gmail.com</p>
+                            <p class="mb-2"><i class="fas fa-phone mr-2"></i> +593 98 876 7533</p>
+                            <p><i class="fas fa-map-marker-alt mr-2"></i> Manta, Ecuador</p>
+                        </address>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Enlaces</h4>
+                        <ul>
+                            <li class="mb-2"><a href="#" class="hover:text-indigo-300">Inicio</a></li>
+                            <li class="mb-2"><a href="#" class="hover:text-indigo-300">Sobre Mí</a></li>
+                            <li class="mb-2"><a href="#" class="hover:text-indigo-300">Proyectos</a></li>
+                            <li><a href="#" class="hover:text-indigo-300">Contacto</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Redes Sociales</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/JostinMoreira" target="_blank" rel="noopener noreferrer" class="text-white hover:text-indigo-300">
+                                <i class="fab fa-github text-2xl"></i>
+                            </a>
+                            <a href="https://x.com/ChostinM" target="_blank" rel="noopener noreferrer" class="text-white hover:text-indigo-300">
+                                <i class="fab fa-twitter text-2xl"></i>
+                            </a>
+                            <a href="https://www.instagram.com/chostinn/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-indigo-300">
+                                <i class="fab fa-instagram text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+                    <p>&copy; 2025 Jostin Moreira. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
