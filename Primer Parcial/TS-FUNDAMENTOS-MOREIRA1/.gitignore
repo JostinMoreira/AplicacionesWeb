@@ -1,0 +1,5 @@
+node_modules/
+dist/
+*.js
+git add .
+git commit -m "TS FUNDAMENTOS MOREIRA"git commit -m "TS FUNDAMENTOS MOREIRA"

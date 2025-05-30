@@ -1,0 +1,10 @@
+{
+  "name": "ts-fundamentos-moreira",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "tsc && node dist/index.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
