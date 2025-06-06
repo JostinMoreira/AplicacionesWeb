@@ -1,10 +1,15 @@
 {
-  "name": "ts-fundamentos-moreira",
-  "version": "1.0.0",
+  "name": "practica4-typescript-dom",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "start": "tsc && node dist/index.js"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5"
   }
 }

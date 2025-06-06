@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Comentarios - Práctica 4</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center mb-8 text-blue-600">Sistema de Gestión de Comentarios</h1>
+
+        <!-- Sección 1: Formulario de Registro -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800">Registrar Nuevo Comentario</h2>
+            <form id="comentarioForm" class="space-y-4">
+                <div>
+                    <label for="autorNombre" class="block text-sm font-medium text-gray-700">Nombre del Autor</label>
+                    <input type="text" id="autorNombre" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                    <div id="errorAutorNombre" class="text-red-500 text-sm mt-1 hidden"></div>
+                </div>
+
+                <div>
+                    <label for="autorCorreo" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                    <input type="email" id="autorCorreo" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                    <div id="errorAutorCorreo" class="text-red-500 text-sm mt-1 hidden"></div>
+                </div>
+
+                <div>
+                    <label for="autorEdad" class="block text-sm font-medium text-gray-700">Edad</label>
+                    <input type="number" id="autorEdad" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                    <div id="errorAutorEdad" class="text-red-500 text-sm mt-1 hidden"></div>
+                </div>
+
+                <div>
+                    <label for="contenidoComentario" class="block text-sm font-medium text-gray-700">Comentario</label>
+                    <textarea id="contenidoComentario" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border"></textarea>
+                    <div id="errorContenido" class="text-red-500 text-sm mt-1 hidden"></div>
+                </div>
+
+                <div>
+                    <label for="categoriaSelect" class="block text-sm font-medium text-gray-700">Categoría</label>
+                    <select id="categoriaSelect" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                        <option value="">Seleccionar categoría</option>
+                    </select>
+                    <div id="errorCategoria" class="text-red-500 text-sm mt-1 hidden"></div>
+                </div>
+
+                <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Registrar Comentario
+                </button>
+            </form>
+        </div>
+
+        <!-- Sección 2: Tarjetas dinámicas de usuarios -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800">Usuarios del Sistema</h2>
+            <div id="usuariosContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Las tarjetas se generarán dinámicamente -->
+            </div>
+        </div>
+
+        <!-- Sección 3: Lista de comentarios -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800">Lista de Comentarios</h2>
+            <div class="mb-4">
+                <button id="btnTodos" class="bg-gray-500 text-white px-4 py-2 rounded mr-2 hover:bg-gray-600">Todos</button>
+                <button id="btnPendientes" class="bg-yellow-500 text-white px-4 py-2 rounded mr-2 hover:bg-yellow-600">Pendientes</button>
+                <button id="btnRevision" class="bg-blue-500 text-white px-4 py-2 rounded mr-2 hover:bg-blue-600">En Revisión</button>
+                <button id="btnImplementados" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Implementados</button>
+            </div>
+            <div id="comentariosContainer" class="space-y-4">
+                <!-- Los comentarios se generarán dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./src/ts/main.ts"></script>
+</body>
+</html>
