@@ -1,0 +1,173 @@
+<div class="usuarios-container">
+  <div class="header-section">
+    <h1>👥 Gestión de Usuarios</h1>
+    <button class="btn btn-primary" (click)="mostrarFormularioNuevo()">
+      ➕ Nuevo Usuario
+    </button>
+  </div>
+
+  <!-- Formulario de Usuario -->
+  <div class="form-section" *ngIf="mostrarFormulario">
+    <div class="card">
+      <h2>{{ editandoUsuario ? '✏️ Editar Usuario' : '➕ Nuevo Usuario' }}</h2>
+      
+      <form [formGroup]="usuarioForm" (ngSubmit)="guardarUsuario()">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nombre">Nombre *</label>
+            <input 
+              type="text" 
+              id="nombre" 
+              class="form-control" 
+              formControlName="nombre"
+              [class.error]="usuarioForm.get('nombre')?.invalid && usuarioForm.get('nombre')?.touched">
+            <div class="error-message" *ngIf="getErrorMessage('nombre')">
+              {{ getErrorMessage('nombre') }}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="apellido">Apellido *</label>
+            <input 
+              type="text" 
+              id="apellido" 
+              class="form-control" 
+              formControlName="apellido"
+              [class.error]="usuarioForm.get('apellido')?.invalid && usuarioForm.get('apellido')?.touched">
+            <div class="error-message" *ngIf="getErrorMessage('apellido')">
+              {{ getErrorMessage('apellido') }}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input 
+            type="email" 
+            id="email" 
+            class="form-control" 
+            formControlName="email"
+            [class.error]="usuarioForm.get('email')?.invalid && usuarioForm.get('email')?.touched">
+          <div class="error-message" *ngIf="getErrorMessage('email')">
+            {{ getErrorMessage('email') }}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="carrera">Carrera *</label>
+            <select 
+              id="carrera" 
+              class="form-control" 
+              formControlName="carrera"
+              [class.error]="usuarioForm.get('carrera')?.invalid && usuarioForm.get('carrera')?.touched">
+              <option value="">Seleccionar carrera</option>
+              <option *ngFor="let carrera of carreras" [value]="carrera">
+                {{ carrera }}
+              </option>
+            </select>
+            <div class="error-message" *ngIf="getErrorMessage('carrera')">
+              {{ getErrorMessage('carrera') }}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="semestre">Semestre *</label>
+            <input 
+              type="number" 
+              id="semestre" 
+              class="form-control" 
+              formControlName="semestre"
+              min="1" 
+              max="10"
+              [class.error]="usuarioForm.get('semestre')?.invalid && usuarioForm.get('semestre')?.touched">
+            <div class="error-message" *ngIf="getErrorMessage('semestre')">
+              {{ getErrorMessage('semestre') }}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="checkbox-label">
+            <input 
+              type="checkbox" 
+              formControlName="activo">
+            <span class="checkmark"></span>
+            Usuario Activo
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-success" [disabled]="usuarioForm.invalid">
+            {{ editandoUsuario ? '💾 Actualizar' : '➕ Crear' }}
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="cancelarEdicion()">
+            ❌ Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Lista de Usuarios -->
+  <div class="table-section">
+    <div class="card">
+      <h2>📋 Lista de Usuarios ({{ usuarios.length }})</h2>
+      
+      <div class="table-responsive" *ngIf="usuarios.length > 0; else noUsuarios">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre Completo</th>
+              <th>Email</th>
+              <th>Carrera</th>
+              <th>Semestre</th>
+              <th>Fecha Registro</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usuario of usuarios">
+              <td>{{ usuario.id }}</td>
+              <td>
+                <div class="user-info">
+                  <strong>{{ usuario.nombre }} {{ usuario.apellido }}</strong>
+                </div>
+              </td>
+              <td>{{ usuario.email }}</td>
+              <td>{{ usuario.carrera }}</td>
+              <td class="text-center">{{ usuario.semestre }}°</td>
+              <td>{{ usuario.fechaRegistro | date:'dd/MM/yyyy' }}</td>
+              <td>
+                <span class="status-badge" [ngClass]="usuario.activo ? 'status-active' : 'status-inactive'">
+                  {{ usuario.activo ? '✅ Activo' : '❌ Inactivo' }}
+                </span>
+              </td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn btn-warning btn-sm" (click)="editarUsuario(usuario)">
+                    ✏️ Editar
+                  </button>
+                  <button class="btn btn-danger btn-sm" (click)="eliminarUsuario(usuario.id)">
+                    🗑️ Eliminar
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <ng-template #noUsuarios>
+        <div class="no-data">
+          <p>📭 No hay usuarios registrados en el sistema.</p>
+          <button class="btn btn-primary" (click)="mostrarFormularioNuevo()">
+            ➕ Crear Primer Usuario
+          </button>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

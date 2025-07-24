@@ -1,0 +1,89 @@
+<div class="home-container">
+  <div class="hero-section">
+    <h1>🎓 Bienvenido al Sistema de Quejas e Ideas</h1>
+    <p class="hero-description">
+      Plataforma universitaria para que estudiantes puedan expresar sus quejas, sugerencias e ideas 
+      para mejorar la experiencia académica y los servicios universitarios.
+    </p>
+  </div>
+
+  <!-- Estadísticas -->
+  <div class="stats-section">
+    <h2>📊 Estadísticas del Sistema</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">👥</div>
+        <div class="stat-content">
+          <h3>{{ totalUsuarios }}</h3>
+          <p>Usuarios Registrados</p>
+        </div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-icon">✅</div>
+        <div class="stat-content">
+          <h3>{{ usuariosActivos }}</h3>
+          <p>Usuarios Activos</p>
+        </div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-icon">📝</div>
+        <div class="stat-content">
+          <h3>{{ totalPublicaciones }}</h3>
+          <p>Publicaciones Totales</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Publicaciones Recientes -->
+  <div class="recent-section">
+    <h2>📋 Publicaciones Recientes</h2>
+    <div class="recent-posts" *ngIf="publicacionesRecientes.length > 0; else noPublicaciones">
+      <div class="post-card" *ngFor="let publicacion of publicacionesRecientes">
+        <div class="post-header">
+          <span class="post-type" [ngClass]="'type-' + publicacion.tipo">
+            {{ publicacion.tipo === 'queja' ? '⚠️ Queja' : '💡 Idea' }}
+          </span>
+          <span class="post-priority" [ngClass]="'priority-' + publicacion.prioridad">
+            {{ publicacion.prioridad | titlecase }}
+          </span>
+        </div>
+        <h3>{{ publicacion.titulo }}</h3>
+        <p class="post-content">{{ publicacion.contenido | slice:0:150 }}...</p>
+        <div class="post-meta">
+          <span>👤 {{ publicacion.usuarioNombre }}</span>
+          <span>📅 {{ publicacion.fechaCreacion | date:'dd/MM/yyyy' }}</span>
+          <span class="post-status" [ngClass]="'status-' + publicacion.estado">
+            {{ getEstadoTexto(publicacion.estado) }}
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <ng-template #noPublicaciones>
+      <div class="no-data">
+        <p>No hay publicaciones recientes disponibles.</p>
+      </div>
+    </ng-template>
+  </div>
+
+  <!-- Acciones Rápidas -->
+  <div class="actions-section">
+    <h2>🚀 Acciones Rápidas</h2>
+    <div class="actions-grid">
+      <a routerLink="/usuarios" class="action-card">
+        <div class="action-icon">👥</div>
+        <h3>Gestionar Usuarios</h3>
+        <p>Administrar usuarios del sistema</p>
+      </a>
+      
+      <a routerLink="/publicaciones" class="action-card">
+        <div class="action-icon">📝</div>
+        <h3>Ver Publicaciones</h3>
+        <p>Revisar quejas e ideas enviadas</p>
+      </a>
+    </div>
+  </div>
+</div>

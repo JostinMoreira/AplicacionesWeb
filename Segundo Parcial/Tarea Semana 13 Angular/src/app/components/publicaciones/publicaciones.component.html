@@ -1,0 +1,196 @@
+<div class="publicaciones-container">
+  <div class="header-section">
+    <h1>📝 Gestión de Publicaciones</h1>
+    <button class="btn btn-primary" (click)="mostrarFormularioNuevo()">
+      ➕ Nueva Publicación
+    </button>
+  </div>
+
+  <!-- Formulario de Publicación -->
+  <div class="form-section" *ngIf="mostrarFormulario">
+    <div class="card">
+      <h2>{{ editandoPublicacion ? '✏️ Editar Publicación' : '➕ Nueva Publicación' }}</h2>
+      
+      <form [formGroup]="publicacionForm" (ngSubmit)="guardarPublicacion()">
+        <div class="form-group">
+          <label for="titulo">Título *</label>
+          <input 
+            type="text" 
+            id="titulo" 
+            class="form-control" 
+            formControlName="titulo"
+            placeholder="Ingrese el título de la publicación"
+            [class.error]="publicacionForm.get('titulo')?.invalid && publicacionForm.get('titulo')?.touched">
+          <div class="error-message" *ngIf="getErrorMessage('titulo')">
+            {{ getErrorMessage('titulo') }}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="tipo">Tipo *</label>
+            <select 
+              id="tipo" 
+              class="form-control" 
+              formControlName="tipo"
+              [class.error]="publicacionForm.get('tipo')?.invalid && publicacionForm.get('tipo')?.touched">
+              <option value="">Seleccionar tipo</option>
+              <option *ngFor="let tipo of tipos" [value]="tipo.value">
+                {{ tipo.label }}
+              </option>
+            </select>
+            <div class="error-message" *ngIf="getErrorMessage('tipo')">
+              {{ getErrorMessage('tipo') }}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="categoria">Categoría *</label>
+            <select 
+              id="categoria" 
+              class="form-control" 
+              formControlName="categoria"
+              [class.error]="publicacionForm.get('categoria')?.invalid && publicacionForm.get('categoria')?.touched">
+              <option value="">Seleccionar categoría</option>
+              <option *ngFor="let categoria of categorias" [value]="categoria">
+                {{ categoria }}
+              </option>
+            </select>
+            <div class="error-message" *ngIf="getErrorMessage('categoria')">
+              {{ getErrorMessage('categoria') }}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="contenido">Contenido *</label>
+          <textarea 
+            id="contenido" 
+            class="form-control" 
+            formControlName="contenido"
+            rows="5"
+            placeholder="Describa detalladamente su queja o idea..."
+            [class.error]="publicacionForm.get('contenido')?.invalid && publicacionForm.get('contenido')?.touched">
+          </textarea>
+          <div class="error-message" *ngIf="getErrorMessage('contenido')">
+            {{ getErrorMessage('contenido') }}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="usuarioId">Usuario *</label>
+            <select 
+              id="usuarioId" 
+              class="form-control" 
+              formControlName="usuarioId"
+              [class.error]="publicacionForm.get('usuarioId')?.invalid && publicacionForm.get('usuarioId')?.touched">
+              <option value="">Seleccionar usuario</option>
+              <option *ngFor="let usuario of usuarios" [value]="usuario.id">
+                {{ usuario.nombre }} {{ usuario.apellido }} - {{ usuario.carrera }}
+              </option>
+            </select>
+            <div class="error-message" *ngIf="getErrorMessage('usuarioId')">
+              {{ getErrorMessage('usuarioId') }}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="prioridad">Prioridad *</label>
+            <select 
+              id="prioridad" 
+              class="form-control" 
+              formControlName="prioridad">
+              <option *ngFor="let prioridad of prioridades" [value]="prioridad.value">
+                {{ prioridad.label }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="estado">Estado *</label>
+          <select 
+            id="estado" 
+            class="form-control" 
+            formControlName="estado">
+            <option *ngFor="let estado of estados" [value]="estado.value">
+              {{ estado.label }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-success" [disabled]="publicacionForm.invalid">
+            {{ editandoPublicacion ? '💾 Actualizar' : '➕ Crear' }}
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="cancelarEdicion()">
+            ❌ Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Lista de Publicaciones -->
+  <div class="table-section">
+    <div class="card">
+      <h2>📋 Lista de Publicaciones ({{ publicaciones.length }})</h2>
+      
+      <div class="publicaciones-grid" *ngIf="publicaciones.length > 0; else noPublicaciones">
+        <div class="publicacion-card" *ngFor="let publicacion of publicaciones">
+          <div class="card-header">
+            <div class="header-left">
+              <span class="tipo-badge" [ngClass]="'tipo-' + publicacion.tipo">
+                {{ getTipoTexto(publicacion.tipo) }}
+              </span>
+              <span class="prioridad-badge" [ngClass]="'prioridad-' + publicacion.prioridad">
+                {{ getPrioridadTexto(publicacion.prioridad) }}
+              </span>
+            </div>
+            <div class="header-right">
+              <span class="estado-badge" [ngClass]="'estado-' + publicacion.estado">
+                {{ getEstadoTexto(publicacion.estado) }}
+              </span>
+            </div>
+          </div>
+
+          <div class="card-content">
+            <h3>{{ publicacion.titulo }}</h3>
+            <p class="contenido">{{ publicacion.contenido }}</p>
+            
+            <div class="meta-info">
+              <div class="meta-item">
+                <strong>📂 Categoría:</strong> {{ publicacion.categoria }}
+              </div>
+              <div class="meta-item">
+                <strong>👤 Usuario:</strong> {{ publicacion.usuarioNombre }}
+              </div>
+              <div class="meta-item">
+                <strong>📅 Fecha:</strong> {{ publicacion.fechaCreacion | date:'dd/MM/yyyy HH:mm' }}
+              </div>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <button class="btn btn-warning btn-sm" (click)="editarPublicacion(publicacion)">
+              ✏️ Editar
+            </button>
+            <button class="btn btn-danger btn-sm" (click)="eliminarPublicacion(publicacion.id)">
+              🗑️ Eliminar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #noPublicaciones>
+        <div class="no-data">
+          <p>📭 No hay publicaciones registradas en el sistema.</p>
+          <button class="btn btn-primary" (click)="mostrarFormularioNuevo()">
+            ➕ Crear Primera Publicación
+          </button>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="app-container">
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-brand">
+        <h2>🎓 Universidad - Quejas e Ideas</h2>
+      </div>
+      <div class="navbar-nav">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">
+          🏠 Inicio
+        </a>
+        <a routerLink="/usuarios" routerLinkActive="active" class="nav-link">
+          👥 Usuarios
+        </a>
+        <a routerLink="/publicaciones" routerLinkActive="active" class="nav-link">
+          📝 Publicaciones
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido principal -->
+  <main class="main-content">
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 Universidad - Sistema de Quejas e Ideas. Desarrollado con Angular.</p>
+    </div>
+  </footer>
+</div>
