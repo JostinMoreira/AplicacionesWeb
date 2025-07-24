@@ -62,7 +62,7 @@ Esta aplicación permite a los estudiantes universitarios publicar quejas e idea
 
 ## 📱 Evidencias de Funcionamiento
 ![Evidencia 1](./screemshots/evidencia1.png)
-![Evidencia 2](./screemshots/evidenca2.png)
+![Evidencia 2](./screemshots/evidencia2.png)
 
 
 ### 🏠 Página de Inicio
